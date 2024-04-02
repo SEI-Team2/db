@@ -70,15 +70,6 @@ CREATE TABLE Friends (
     FOREIGN KEY (UserID2) REFERENCES Users(UserID)
 ) ENGINE=InnoDB;
 
--- ClubMembers Table
-CREATE TABLE ClubMembers (
-    UserID INT NOT NULL, -- 동아리에 소속되어 있는 유저 기본키
-    ClubID INT NOT NULL, -- 동아리 기본키
-    PRIMARY KEY (UserID, ClubID),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (ClubID) REFERENCES Clubs(ClubID)
-) ENGINE=InnoDB;
-
 -- ClubTimeSlots Table
 CREATE TABLE ClubTimeSlots (
     SlotID INT AUTO_INCREMENT PRIMARY KEY, -- 동아리 전용 시간 기록 기본키
