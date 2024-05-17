@@ -116,6 +116,15 @@ CREATE TABLE Notifications (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 ) ENGINE=InnoDB;
 
+-- 블랙리스트 테이블
+CREATE TABLE Blacklist (
+    BlacklistID INT AUTO_INCREMENT PRIMARY KEY, -- 블랙리스트 ID
+    UserID INT NOT NULL, -- 블랙리스트에 추가된 유저
+    Reason TEXT NOT NULL, -- 블랙리스트 추가 이유
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 블랙리스트 추가 시간
+    FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE -- 유저 삭제시 블랙리스트 삭제
+) ENGINE=InnoDB;
+
 -- 알림의 경우
 -- 4.1. "Student"."Chairman"의 경우, 본인이 만든 모임이 확정되었을 때, (Rentals 의 Status가 Pending -> Confirmed)
 -- 		      본인이 만든 모임이 반려되었을 때, (Rentals 의 Status가 Confirmed -> Rejected)
